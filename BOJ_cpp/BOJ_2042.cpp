@@ -2,41 +2,24 @@
 using namespace std;
 
 #define lli long long int
-long long int arrNum[1000002];
-long long int arrSum[1000002];
-long long int arrChange[1000002] = { 0 };
-map <long long int, long long int> mapChange;
 
-long long int  A1(long long int  b, long long int  c)
-{
-	lli tmp = arrNum[b];//a가 1인 경우 b(1 ≤ b ≤ N)번째 수를 c로 바꿈
-	arrChange[b] = ((tmp - c) * (-1));
-	mapChange.emplace(b, arrChange[b]);
-	return tmp;
-}
-
-long long int  A2(lli b, lli c)
-{
-	lli tmp = arrSum[c] - arrSum[b - 1]; //b(1 ≤ b ≤ N)번째 수부터 c(b ≤ c ≤ N)번째 수까지의 합
-
-	for (int i = b; i <= c; ++i)
-	{
-		map<lli, lli>::iterator it = mapChange.find(i);
-		if (it != mapChange.end())
-			tmp += mapChange[i];//수의 변경 반영
-	}
-
-	return tmp;
-}
+long long int arrNum[1000002] = { 0, };
+long long int arrSum[1000002] = { 0, };
 
 int main()
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL), cout.tie(NULL);
 
-	vector<lli> answer;
+	// N : 수의 개수 (1 ≤ N ≤ 1000000)
+	// M : 수의 변경이 일어나는 횟수 (1 ≤ M ≤ 10000)
+	// K : 구간의 합을 구하는 횟수
+
 	lli N, M, K;
+
 	cin >> N >> M >> K;
+	//scanf("%lld %lld %lld", &N, &M, &K);
+
 	arrNum[0] = 0;
 	arrSum[0] = 0;
 
@@ -44,25 +27,34 @@ int main()
 	{
 		lli a;
 		cin >> a;
-		arrNum[i + 1] = a;
 		arrSum[i + 1] = arrSum[i] + a;
 	}
 
-	for (int i = 0; i < M + K; i++)
+	vector<lli> answer;
+	for (int i = 0; i < M + K; ++i)
 	{
 		lli a, b, c;
 		cin >> a >> b >> c;
+		//int a, b, c;
+		//scanf("%d %d %d", &a, &b, &c);
 
-		//lli z = 0;
+		if (a == 1)	// a가 1인 경우 b번째 수를 c로 바꿈
+		{
+			lli i32b = arrSum[b] - arrSum[b - 1];
+			arrNum[b] = c - i32b;
+		}
+		else	// a가 2인 경우에는 b번째 수부터 c번째 수까지의 합
+		{
+			lli i32b = arrSum[c] - arrSum[b - 1];
+			for (int j = b; j < c + 1; ++j)
+			{
+				i32b += arrNum[j];
+			}
 
-		if (a == 1)
-			A1(b, c);
-		else {
-			answer.push_back(A2(b, c));
-			//z = A2(b, c);
-			//cout << z << "\n";
+			answer.push_back(i32b);
 		}
 	}
+
 	for (int i = 0; i < answer.size(); ++i)
-		cout << answer[i] << "\n";
+		cout << answer[i] << "\n";//printf("%lld\n", answer[i]); //
 }
