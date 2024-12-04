@@ -57,6 +57,7 @@ int main()
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
+
 	valN[0][0] = '0';
 	valN[1][0] = '0';
 	valN[2][0] = '1';
