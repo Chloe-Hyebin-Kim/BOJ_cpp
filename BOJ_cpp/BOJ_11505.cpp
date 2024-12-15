@@ -45,9 +45,6 @@ lli ChangeSegmentTree(int node, int start, int end, int idx, int newValue)
 
 lli MultipleSegmentTree(int start, int end, int node, int left, int right)
 {
-	if (left > end || right < start)
-		return 0;
-
 	if (right < start || end < left)
 	{
 		//범위 밖
@@ -89,16 +86,13 @@ int main()
 		int a, b, c; //a가 1인 경우 b번째 수를 c로 바꾸고 a가 2인 경우에는 b부터 c까지의 곱을 구하여 출력
 		cin >> a >> b >> c;
 
-		if (a == 1)
+		if (a == 1)//b번째 수를 c로 바꾸고
 		{
-			//b번째 수를 c로 바꾸고
 			ChangeSegmentTree(1, 0, n - 1, b - 1, c);
 		}
-		else
+		else if (a == 2)//b부터 c까지의 곱을 구하여 출력
 		{
-			//b부터 c까지의 곱을 구하여 출력
 			lli ans = MultipleSegmentTree(0, n - 1, 1, b - 1, c - 1);
-			//ans = ans % 1000000007;
 
 			answer.push_back(ans);
 		}
