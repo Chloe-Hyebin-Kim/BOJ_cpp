@@ -1,178 +1,75 @@
-﻿#include <bits/stdc++.h>
+﻿#define MAX 1000001
+#include <iostream>
 using namespace std;
 
-#define lli long long int
+int N, M, K;
+long long arr[MAX];
 
-int leafNode_startIndex;
-lli segtree[1000002];
+long long segTree[4000004];
 
-vector<lli> answer; //사이즈는 K
-vector<lli> SegmentTree; //사이즈는 K
-
-lli arrNum[1000002] = { 0, };
-lli arrSum[1000002] = { 0, };
-
-lli init_segtree(int start, int end, int node)
-{
+long long init(int start, int end, int nodeNum)
+{ //start : 시작 인덱스, end : 끝 인덱스,
 	if (start == end)
-	{
-		segtree[node] = 0;
-	}
-	else
-	{
-		int mid = (start + end) / 2;
-		lli nextSegTree = init_segtree(start, mid, (node * 2)) + init_segtree(mid + 1, end, (node * 2 + 1));
-		segtree[node] = nextSegTree;
-	}
+		return segTree[nodeNum] = arr[start]; //리프 노드
 
-	return segtree[node];
+	int mid = (start + end) / 2;
+	return segTree[nodeNum] = init(start, mid, nodeNum * 2) + init(mid + 1, end, nodeNum * 2 + 1);
 }
 
-lli Query(int b, int c)
+//start, end : 해당 노드의 시작, 끝 인덱스
+//left, right : 구간 합 구하고자 하는 범위
+long long subSum(int start, int end, int nodeNum, int left, int right)
 {
-	lli ret = 0;
+	if (left > end || right < start)
+		return 0;
 
-	//if (a == 2)	// a가 2인 경우에는 b번째 수부터 c번째 수까지의 합
-	//{
-	ret = arrSum[c] - arrSum[b - 1];
-	for (int j = b; j < c + 1; ++j)
-	{
-		ret += arrNum[j];
-	}
-
-	answer.push_back(ret);
-	//}
-	//else if (a == 1)	// a가 1인 경우 b번째 수를 c로 바꿈
-	//{
-	//	//lli tmp = arrNum[b];
-	//	//arrNum[b] = c;
-
-	//	lli i32b = arrSum[b] - arrSum[b - 1];//==arrNum[b]
-	//	ret = i32b + (c - i32b);
-	//}
-
-	return ret;
+	if (left <= start && end <= right)
+		return segTree[nodeNum]; //완전히 포함 (6~11 구하고 싶은데 해당 노드가 6~8일 때)
+	int mid = (start + end) / 2;
+	return subSum(start, mid, nodeNum * 2, left, right) + subSum(mid + 1, end, nodeNum * 2 + 1, left, right);
 }
 
-void Update_SegmentTree(int Node, int Start, int End, int Index, int Diff)
+void update(int start, int end, int nodeNum, int targetIdx, long long val)
 {
-	if (Index< Start || Index > End)
+	if (targetIdx < start || end < targetIdx)
 		return;
 
-	SegmentTree[Node] = SegmentTree[Node] + Diff;
-	if (Start != End)
-	{
-		int Mid = (Start + End) / 2;
-
-		Update_SegmentTree(Node * 2, Start, Mid, Index, Diff);
-		Update_SegmentTree(Node * 2 + 1, Mid + 1, End, Index, Diff);
-	}
-}
-
-///Node = 노드 번호
-///Start End = 해당 노드가 포함하고 있는 범위
-///Left, Right = 구하고자 하는 범위
-lli Sum(int Node, int Start, int End, int Left, int Right)
-{
-	lli rst = 0;
-
-	if (Left > End || Right < Start)//탐색하고 있는 범위가 구하고자 하는 범위와 완전히 일치하지 않는 경우.
-		rst = 0;//따라서 더 이상의 탐색은 무의미하다.
-
-	if (Left <= Start && End <= Right) //탐색하고 있는 범위가 구하고자 하는 범위에 완전히 속해있는 경우.
-		rst = SegmentTree[Node];//재빨리 해당 노드의 값을 반환!
-
-	//일부만 걸쳤으므로 더 깊은 탐색을 진행해봐야 하는 경우
-	lli Mid = (Start + End) / 2;
-	lli Left_Result = Sum(Node * 2, Start, Mid, Left, Right);
-	lli Right_Result = Sum(Node * 2 + 1, Mid + 1, End, Left, Right);
-	rst = Left_Result + Right_Result;
-
-	return rst;
-}
-
-lli Make_SegmentTree(int Node, int Start, int End)
-{
-	lli rst = 0;
-
-	if (Start == End)//더 이상 나눌 수 있는 범위가 없다==이는 더 이상의자식을 가질 수 없음==즉, 리프노드
-		SegmentTree[Node] = arrNum[Start]; //재귀함수에서 기저조건에 해당하는 부분!(재귀의 종료)
-
-	lli Mid = (Start + End) / 2;
-	lli Left_Result = Make_SegmentTree(Node * 2, Start, Mid);
-	lli Right_Result = Make_SegmentTree(Node * 2 + 1, Mid + 1, End);
-	SegmentTree[Node] = Left_Result + Right_Result;
-	rst = SegmentTree[Node];
-
-	return rst;
+	segTree[nodeNum] += val;
+	if (start == end)
+		return;
+	int mid = (start + end) / 2;
+	update(start, mid, nodeNum * 2, targetIdx, val);
+	update(mid + 1, end, nodeNum * 2 + 1, targetIdx, val);
 }
 
 int main()
 {
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL), cout.tie(NULL);
-
-	// N : 수의 개수 (1 ≤ N ≤ 1000000)
-	// M : 수의 변경이 일어나는 횟수 (1 ≤ M ≤ 10000)
-	// K : 구간의 합을 구하는 횟수
-
-	lli N, M, K;
-
 	cin >> N >> M >> K;
-	//scanf("%lld %lld %lld", &N, &M, &K);
 
-	int tree_height = ceil(log2(N) + 1);
-	leafNode_startIndex = 1 << (tree_height - 1);
-
-	//int Tree_Height = (int)ceil(log2(N));//세그트리 높이
-	//int Tree_Size = (1 << (Tree_Height + 1));//세그트리 크기
-	//SegmentTree.resize(Tree_Size);//벡터배열 크기 정의
-	SegmentTree.resize(N * 4);//벡터배열 크기 정의
-
-	arrNum[0] = 0;
-	//arrSum[0] = 0;
-
-	for (int i = 1; i <= N; i++)
+	int num;
+	for (int i = 0; i < N; i++)
 	{
-		cin >> arrNum[i];
-		//lli a;
-		//cin >> a;
-		//arrSum[i] = a;
-		//arrNum[i] = a;
+		cin >> arr[i];
 	}
 
-	//init_segtree(1, N, 1);
-	Make_SegmentTree(1, 1, N);
+	//1. 세그먼트트리 만들기 (트리 인덱스는 1부터 ~ )
+	init(0, N - 1, 1);
 
-	for (int i = 0; i < M + K; ++i)
+	long long a, b, c;
+	for (int i = 0; i < M + K; i++)
 	{
-		lli a, b, c;
 		cin >> a >> b >> c;
-		//int a, b, c;
-		//scanf("%d %d %d", &a, &b, &c);
-
-		if (a == 1)	// a가 1인 경우 b번째 수를 c로 바꿈
-		{
-			Update_SegmentTree(b, b + 1, N, b, c - arrNum[b]);
-			//lli i32b = arrSum[b] - arrSum[b - 1];
-			//arrNum[b] = c - i32b;
+		if (a == 1)
+		{ //b번째 인덱스를 c로 바꾸기. 바뀐 차이 만큼 트리 각 노드에 더해줘야함.
+			long long tmp = c - arr[b - 1];	//arr 값 바꾸기 전에 값 저장해놓아야 파라미터로 넘길 수 있음
+			arr[b - 1] = c;
+			update(0, N - 1, 1, b - 1, tmp);
 		}
-		else// a가 2인 경우에는 b번째 수부터 c번째 수까지의 합
-		{
-			lli i32b = Sum(1, 1, N, b, c);
-			answer.push_back(i32b);
-
-			//Query(b, c);
-			/*lli i32b = arrSum[c] - arrSum[b - 1];
-			for (int j = b; j < c + 1; ++j)
-			{
-				i32b += arrNum[j];
-			}
-
-			answer.push_back(i32b);*/
+		else
+		{ //b~c 합(b=3, c = 7이면 arr[2]~arr[6] 구해야 함)
+			cout << subSum(0, N - 1, 1, b - 1, c - 1) << "\n";
 		}
 	}
 
-	for (int i = 0; i < K; ++i)
-		cout << answer[i] << "\n";//printf("%lld\n", answer[i]); //
+	return 0;
 }
