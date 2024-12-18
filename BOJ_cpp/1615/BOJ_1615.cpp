@@ -58,10 +58,10 @@ int main()
 	long long int result = 0;
 
 	cin >> n >> m;
-	//N°ú °£¼±ÀÇ °³¼ö MÀÌ ÁÖ¾îÁø´Ù.
-	//±× ´ÙÀ½ ÁÙºÎÅÍ M + 1¹øÂ° ÁÙ±îÁö µÎ °³ÀÇ ¼ö(i, j)°¡ ÁÖ¾îÁö´Âµ¥
-	//ÀÌ´Â ¿ÞÂÊ ±×·ìÀÇ i¹ø Á¤Á¡°ú ¿À¸¥ÂÊ ±×·ìÀÇ j¹ø Á¤Á¡À» ¿¬°áÇÏ´Â °£¼±ÀÌ ÀÖ´Ù´Â ÀÇ¹ÌÀÌ´Ù.
-	//Áßº¹µÇ´Â °£¼±ÀÌ ÀÔ·ÂÀ¸·Î ÁÖ¾îÁöÁö ¾Ê´Â´Ù.
+	//Nê³¼ ê°„ì„ ì˜ ê°œìˆ˜ Mì´ ì£¼ì–´ì§„ë‹¤.
+	//ê·¸ ë‹¤ìŒ ì¤„ë¶€í„° M + 1ë²ˆì§¸ ì¤„ê¹Œì§€ ë‘ ê°œì˜ ìˆ˜(i, j)ê°€ ì£¼ì–´ì§€ëŠ”ë°
+	//ì´ëŠ” ì™¼ìª½ ê·¸ë£¹ì˜ ië²ˆ ì •ì ê³¼ ì˜¤ë¥¸ìª½ ê·¸ë£¹ì˜ jë²ˆ ì •ì ì„ ì—°ê²°í•˜ëŠ” ê°„ì„ ì´ ìžˆë‹¤ëŠ” ì˜ë¯¸ì´ë‹¤.
+	//ì¤‘ë³µë˜ëŠ” ê°„ì„ ì´ ìž…ë ¥ìœ¼ë¡œ ì£¼ì–´ì§€ì§€ ì•ŠëŠ”ë‹¤.
 
 	int tree_height = ceil(log2(n) + 1);
 	leafNode_startIndex = 1 << (tree_height - 1);
