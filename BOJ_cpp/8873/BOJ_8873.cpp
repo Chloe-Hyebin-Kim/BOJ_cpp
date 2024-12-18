@@ -21,7 +21,7 @@ public:
         z = _z;
     }
 
-    // º¤ÅÍ µ¡¼À
+    // ë²¡í„° ë§ì…ˆ
     friend Vector3 operator+(const Vector3& a, const Vector3& b)
     {
         float Vx = a.x + b.x;
@@ -31,7 +31,7 @@ public:
         return Vector3(Vx, Vy, Vz);
     }
 
-    // º¤ÅÍ »¬¼À
+    // ë²¡í„° ëº„ì…ˆ
     friend Vector3 operator-(const Vector3& a, const Vector3& b)
     {
         float Vx = a.x - b.x;
@@ -41,7 +41,7 @@ public:
         return Vector3(Vx, Vy, Vz);
     }
 
-    //³»Àû ±¸ÇÏ±â(½ºÄ®¶ó °ö)
+    //ë‚´ì  êµ¬í•˜ê¸°(ìŠ¤ì¹¼ë¼ ê³±)
     friend float operator*(const Vector3& a, const Vector3& b)
     {
         float Vx = a.x * b.x;
@@ -51,7 +51,7 @@ public:
         return Vx + Vy + Vz;
     }
 
-    // µÎ º¤ÅÍ°¡ °°À»¶§
+    // ë‘ ë²¡í„°ê°€ ê°™ì„ë•Œ
     bool operator==(Vector3 a)
     {
         if (x == a.x && y == a.y && z == a.z)
@@ -60,7 +60,7 @@ public:
             return false;
     }
 
-    // Á¤±ÔÈ­
+    // ì •ê·œí™”
     Vector3 Normalrize()
     {
         Vector3 normal;
@@ -72,7 +72,7 @@ public:
         return normal;
     }
 
-    float Magnitude() // º¤ÅÍ Å©±â
+    float Magnitude() // ë²¡í„° í¬ê¸°
     {
         auto magnitude = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
         return magnitude;
