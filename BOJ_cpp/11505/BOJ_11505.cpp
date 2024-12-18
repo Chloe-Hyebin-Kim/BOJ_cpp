@@ -47,13 +47,13 @@ lli MultipleSegmentTree(int start, int end, int node, int left, int right)
 {
 	if (right < start || end < left)
 	{
-		//¹üÀ§ ¹Û
-		return 1;//Ç×µî¿ø»ç¿ë!!!
+		//ë²”ìœ„ ë°–
+		return 1;//í•­ë“±ì›ì‚¬ìš©!!!
 	}
 
 	if (left <= start && end <= right)
 	{
-		//¿Ïº®ÇÏ°Ô ±¸°£ ³»¿¡ Á¸Àç
+		//ì™„ë²½í•˜ê²Œ êµ¬ê°„ ë‚´ì— ì¡´ì¬
 		return arrSegmentTree[node] % 1000000007;
 	}
 
@@ -67,11 +67,11 @@ int main()
 	cout.tie(nullptr);
 	ios::sync_with_stdio(false);
 
-	cin >> n >> m >> k;//¼öÀÇ °³¼ö: N(1 ¡Â N ¡Â 1,000,000)°ú .  ¼öÀÇ º¯°æÀÌ ÀÏ¾î³ª´Â È½¼ö: M(1 ¡Â M ¡Â 10,000), ±¸°£ÀÇ °öÀ» ±¸ÇÏ´Â È½¼ö: K(1 ¡Â K ¡Â 10,000)
+	cin >> n >> m >> k;//ìˆ˜ì˜ ê°œìˆ˜: N(1 â‰¤ N â‰¤ 1,000,000)ê³¼ .  ìˆ˜ì˜ ë³€ê²½ì´ ì¼ì–´ë‚˜ëŠ” íšŸìˆ˜: M(1 â‰¤ M â‰¤ 10,000), êµ¬ê°„ì˜ ê³±ì„ êµ¬í•˜ëŠ” íšŸìˆ˜: K(1 â‰¤ K â‰¤ 10,000)
 
 	int h = ceil(log2(n));
-	leafStart = 1 << h;//¸®ÇÁ³ëµå ½ÃÀÛ ÀÎµ¦½º
-	int segSize = 2 * leafStart;//¼¼±×¸ÕÆ® Æ®¸® ¹è¿­ Å©±â
+	leafStart = 1 << h;//ë¦¬í”„ë…¸ë“œ ì‹œì‘ ì¸ë±ìŠ¤
+	int segSize = 2 * leafStart;//ì„¸ê·¸ë¨¼íŠ¸ íŠ¸ë¦¬ ë°°ì—´ í¬ê¸°
 
 	arrSegmentTree.resize(segSize);
 	arrInput.resize(n);
@@ -83,14 +83,14 @@ int main()
 
 	for (int i = 0; i < m + k; i++)
 	{
-		int a, b, c; //a°¡ 1ÀÎ °æ¿ì b¹øÂ° ¼ö¸¦ c·Î ¹Ù²Ù°í a°¡ 2ÀÎ °æ¿ì¿¡´Â bºÎÅÍ c±îÁöÀÇ °öÀ» ±¸ÇÏ¿© Ãâ·Â
+		int a, b, c; //aê°€ 1ì¸ ê²½ìš° bë²ˆì§¸ ìˆ˜ë¥¼ cë¡œ ë°”ê¾¸ê³  aê°€ 2ì¸ ê²½ìš°ì—ëŠ” bë¶€í„° cê¹Œì§€ì˜ ê³±ì„ êµ¬í•˜ì—¬ ì¶œë ¥
 		cin >> a >> b >> c;
 
-		if (a == 1)//b¹øÂ° ¼ö¸¦ c·Î ¹Ù²Ù°í
+		if (a == 1)//bë²ˆì§¸ ìˆ˜ë¥¼ cë¡œ ë°”ê¾¸ê³ 
 		{
 			ChangeSegmentTree(1, 0, n - 1, b - 1, c);
 		}
-		else if (a == 2)//bºÎÅÍ c±îÁöÀÇ °öÀ» ±¸ÇÏ¿© Ãâ·Â
+		else if (a == 2)//bë¶€í„° cê¹Œì§€ì˜ ê³±ì„ êµ¬í•˜ì—¬ ì¶œë ¥
 		{
 			lli ans = MultipleSegmentTree(0, n - 1, 1, b - 1, c - 1);
 
