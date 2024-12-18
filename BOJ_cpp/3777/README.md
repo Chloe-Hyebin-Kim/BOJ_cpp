@@ -1,3 +1,9 @@
+#  **[ 3777 : Computer Transformation ]**
+
+
+🔗[문제링크](https://www.acmicpc.net/problem/3777)
+
+
 ###  **[통과 시의 스펙]**
 ![Image](https://github.com/user-attachments/assets/c21feabc-2a66-4cad-aff2-51f7aef9acb7)
  **_무려 3등!!!!_**
