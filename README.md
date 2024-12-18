@@ -4,11 +4,11 @@
 
 |구분 |문제링크|풀이|
 |:---:|:---:|:---:|
-|DP, 임의정밀도|[3777 번](https://www.acmicpc.net/problem/3777)|[3777 : Computer Transformation](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/blob/master/BOJ_cpp/BOJ_3777.cpp)|
+|DP, 임의정밀도|[3777 번](https://www.acmicpc.net/problem/3777)|[3777 : Computer Transformation](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/blob/master/BOJ_cpp/3777/BOJ_3777.cpp)|
 |기하학|[11758 번](https://www.acmicpc.net/problem/17386)|[11758 : CCW](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/blob/master/BOJ_cpp/BOJ_11758.cpp)|
 |기하학, 선분 교차 판정|[17386 번](https://www.acmicpc.net/problem/17386)|[17386 : 선분 교차 1](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/blob/master/BOJ_cpp/BOJ_17386.cpp)|
 |기하학, 선분 교차 판정|[12781 번](https://www.acmicpc.net/problem/12781)|[12781 : PIZZA ALVOLOC ](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/blob/master/BOJ_cpp/BOJ_12781.cpp)|
-|그래프 이론,최단경로,플로이드워셜|[11404 번](https://www.acmicpc.net/problem/11404)|[11404 : 플로이드](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/blob/master/BOJ_cpp/BOJ_11404.cpp)|
+|그래프 이론,최단경로,플로이드워셜|[11404 번](https://www.acmicpc.net/problem/11404)|[11404 : 플로이드](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/tree/master/BOJ_cpp/11404)|
 |휴리스틱|[8873 번](https://www.acmicpc.net/problem/8873)|[8873 : 미술시간](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/blob/master/BOJ_cpp/BOJ_8873.cpp)|
 |정렬, 포인터|[11728 번](https://www.acmicpc.net/problem/11728)|[11728 : 배열합치기](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/blob/master/BOJ_cpp/BOJ_11728.cpp)|
 |세그먼트 트리|[11505 번](https://www.acmicpc.net/problem/11505)|[11505 : 구간 곱 구하기](https://github.com/Chloe-Hyebin-Kim/BOJ_cpp/blob/master/BOJ_cpp/BOJ_11505.cpp)|
