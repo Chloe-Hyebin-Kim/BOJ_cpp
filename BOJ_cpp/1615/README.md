@@ -5,7 +5,10 @@
 
 ###  **[통과 시의 스펙]**
 ![image](https://github.com/user-attachments/assets/0e5db9a8-c0aa-47e1-bd87-73daf1b91fa3)
+
 _오예!!!! 31등!!!_
+
+
 
 
 ### **[해결 과정]**
