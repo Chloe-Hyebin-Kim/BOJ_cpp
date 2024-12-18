@@ -26,11 +26,11 @@ int main()
 
 	int i32Result = CCW(arrPoint[0], arrPoint[1], arrPoint[2]);
 
-	if (i32Result > 0)//D>0ÀÌ¸é ¹İ½Ã°è¹æÇâ
+	if (i32Result > 0)//D>0ì´ë©´ ë°˜ì‹œê³„ë°©í–¥
 		answer = 1;
-	else if (i32Result == 0)//D=0ÀÎ °æ¿ì´Â ÆòÇà
+	else if (i32Result == 0)//D=0ì¸ ê²½ìš°ëŠ” í‰í–‰
 		answer = 0;
-	else//D<0ÀÌ¸é ½Ã°è¹æÇâ
+	else//D<0ì´ë©´ ì‹œê³„ë°©í–¥
 		answer = -1;
 	
 
