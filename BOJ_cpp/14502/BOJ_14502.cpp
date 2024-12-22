@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector <vector<int> > Data;//0: ºó Ä­, 1: º®, 2: ¹ÙÀÌ·¯½º
-vector <vector<int> > Data_copy;//0: ºó Ä­, 1: º®, 2: ¹ÙÀÌ·¯½º
+vector <vector<int> > Data;//0: ë¹ˆ ì¹¸, 1: ë²½, 2: ë°”ì´ëŸ¬ìŠ¤
+vector <vector<int> > Data_copy;//0: ë¹ˆ ì¹¸, 1: ë²½, 2: ë°”ì´ëŸ¬ìŠ¤
 vector<int>I0;
 vector<int>I2;
 vector<int>J0;
@@ -33,21 +33,21 @@ int main()
 			Data_copy[i][j] = Data[i][j];
 			if (tmp == 0)
 			{
-				cnt0++;//Ä«¿îÆ® Áõ°¡
-				I0.push_back(i);//À§Ä¡ ÀúÀå
-				J0.push_back(j);//À§Ä¡ ÀúÀå
+				cnt0++;//ì¹´ìš´íŠ¸ ì¦ê°€
+				I0.push_back(i);//ìœ„ì¹˜ ì €ì¥
+				J0.push_back(j);//ìœ„ì¹˜ ì €ì¥
 			}
 			else if (tmp == 2)
 			{
-				cnt2++;//Ä«¿îÆ® Áõ°¡
-				I2.push_back(i);//À§Ä¡ ÀúÀå
-				J2.push_back(j);//À§Ä¡ ÀúÀå
+				cnt2++;//ì¹´ìš´íŠ¸ ì¦ê°€
+				I2.push_back(i);//ìœ„ì¹˜ ì €ì¥
+				J2.push_back(j);//ìœ„ì¹˜ ì €ì¥
 			}
 		}
 	}
 
-	int wall_X1, wall_Y1, wall_X2, wall_Y2, wall_X3, wall_Y3;// º® 3°³ÁÂÇ¥
-	//º®¼¼¿ì±â ½Ã¹Ä·¹ÀÌ¼Ç (0 ~ n*m-1±îÁö ¹İº¹)
+	int wall_X1, wall_Y1, wall_X2, wall_Y2, wall_X3, wall_Y3;// ë²½ 3ê°œì¢Œí‘œ
+	//ë²½ì„¸ìš°ê¸° ì‹œë®¬ë ˆì´ì…˜ (0 ~ n*m-1ê¹Œì§€ ë°˜ë³µ)
 	for (int i = 0; i < cnt0; ++i)
 	{
 		wall_X1 = I0[i];//  == i/M
@@ -63,18 +63,18 @@ int main()
 				wall_X3 = I0[k];//  == j/M
 				wall_Y3 = J0[k];//  == j%M
 
-				//º®¼¼¿ì±â
+				//ë²½ì„¸ìš°ê¸°
 				Data_copy[wall_X1][wall_Y1] = 1;
 				Data_copy[wall_X2][wall_Y2] = 1;
 				Data_copy[wall_X3][wall_Y3] = 1;
 
-				//¹ÙÀÌ·¯½º ÆÛÆ®¸®´Â ½Ã¹Ä·¹ÀÌ¼Ç
+				//ë°”ì´ëŸ¬ìŠ¤ í¼íŠ¸ë¦¬ëŠ” ì‹œë®¬ë ˆì´ì…˜
 				for (int p = 0; p < cnt2; ++p)
 					DFS(I2[p], J2[p]);
 
 				int cnt = 0;
 
-				//ÇØ´ç ½Ã¹Ä·¹ÀÌ¼ÇÀÇ ¾ÈÀüÁö´ë °³¼ö
+				//í•´ë‹¹ ì‹œë®¬ë ˆì´ì…˜ì˜ ì•ˆì „ì§€ëŒ€ ê°œìˆ˜
 				for (int p = 0; p < N; ++p)
 					for (int q = 0; q < M; ++q)
 						if (0 == Data_copy[p][q]) cnt++;
@@ -103,7 +103,7 @@ void DFS(int x, int y)
 		{
 			if (0 == Data_copy[x_][y_])
 			{
-				Data_copy[x_][y_] = 2;//¹ÙÀÌ·¯½º ÆÛÆ®¸®±â
+				Data_copy[x_][y_] = 2;//ë°”ì´ëŸ¬ìŠ¤ í¼íŠ¸ë¦¬ê¸°
 				DFS(x_, y_);
 			}
 		}

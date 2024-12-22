@@ -6,7 +6,7 @@ int DAYS[] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 int convert(int year, int month, int day, int hour, int min)
 {
 	int days = 0;
-	days = 365 * (year - 2013);	// 2016³âÀÌ À±³â
+	days = 365 * (year - 2013);	// 2016ë…„ì´ ìœ¤ë…„
 	for (int m = 1; m < month; m++)
 		days += DAYS[m];
 
@@ -37,7 +37,7 @@ int main()
 		short B, C;
 		cin >> B >> C;
 
-		vector< pair<int, int> > timeline;//<ÀÔ½Ç½Ã°£, Åğ½Ç½Ã°£> ¹è¿­
+		vector< pair<int, int> > timeline;//ì…ì‹¤ì‹œê°„, í‡´ì‹¤ì‹œê°„ ë°°ì—´
 		for (int i = 0; i < B; i++)
 		{
 			string code;
@@ -50,7 +50,7 @@ int main()
 			checkOut += C;
 			timeline.push_back(make_pair(checkIn, checkOut));
 		}
-		sort(timeline.begin(), timeline.end());//ÀÔ½Ç½Ã°£ ±âÁØ
+		sort(timeline.begin(), timeline.end());//ì…ì‹¤ì‹œê°„ ê¸°ì¤€
 
 		multiset<int> rooms;
 		for (pair<int, int>& data : timeline)

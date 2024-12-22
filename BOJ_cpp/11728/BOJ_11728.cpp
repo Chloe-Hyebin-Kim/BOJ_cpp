@@ -19,11 +19,11 @@ int main()
 	int arr1_idx = 1, arr2_idx = 1;
 	for (int i = 1; i <= n + m; i++)
 	{
-		if (arr1_idx > n) // ÀÌ¹Ì arr1 ¹è¿­ÀÇ ¸ğµç ¿ø¼Ò¸¦ arr·Î ¿Å±ä »óÅÂ¸é
-			arr[i] = arr2[arr2_idx++]; // arr2ÀÇ ¿ø¼Ò¸¦ arr¿¡ ¿Å±è
-		else if (arr2_idx > m) // ÀÌ¹Ì arr2 ¹è¿­ÀÇ ¸ğµç ¿ø¼Ò¸¦ arr·Î ¿Å±ä »óÅÂ¸é
-			arr[i] = arr1[arr1_idx++]; // arr1ÀÇ ¿ø¼Ò¸¦ arr·Î ¿Å±è
-		// arr1°ú arr2 Áß ´õ ÀÛÀº °ªÀ» °®´Â ¿ø¼Ò¸¦ arr·Î ¿Å±â°í Æ÷ÀÎÅÍ Áõ°¡
+		if (arr1_idx > n) // ì´ë¯¸ arr1 ë°°ì—´ì˜ ëª¨ë“  ì›ì†Œë¥¼ arrë¡œ ì˜®ê¸´ ìƒíƒœë©´
+			arr[i] = arr2[arr2_idx++]; // arr2ì˜ ì›ì†Œë¥¼ arrì— ì˜®ê¹€
+		else if (arr2_idx > m) // ì´ë¯¸ arr2 ë°°ì—´ì˜ ëª¨ë“  ì›ì†Œë¥¼ arrë¡œ ì˜®ê¸´ ìƒíƒœë©´
+			arr[i] = arr1[arr1_idx++]; // arr1ì˜ ì›ì†Œë¥¼ arrë¡œ ì˜®ê¹€
+		// arr1ê³¼ arr2 ì¤‘ ë” ì‘ì€ ê°’ì„ ê°–ëŠ” ì›ì†Œë¥¼ arrë¡œ ì˜®ê¸°ê³  í¬ì¸í„° ì¦ê°€
 		else if (arr1[arr1_idx] < arr2[arr2_idx])
 			arr[i] = arr1[arr1_idx++];
 		else if (arr1[arr1_idx] >= arr2[arr2_idx])

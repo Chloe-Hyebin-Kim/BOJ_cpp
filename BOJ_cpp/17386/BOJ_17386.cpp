@@ -24,7 +24,7 @@ bool ComparePoint(Point left, Point right)
 		result = (left.x <= right.x);
 	}
 
-	return result;// right∞° left ∫∏¥Ÿ ≈©∏È true∏¶ π›»Ø
+	return result;// rightÍ∞Ä left Î≥¥Îã§ ÌÅ¨Î©¥ trueÎ•º Î∞òÌôò
 }
 
 int IsIntersect(pair< Point, Point > line1, pair<Point, Point > line2)
@@ -69,14 +69,14 @@ int main()
 		arrPoint[i].y = d;
 	}
 
-	long long line1 = CCW(arrPoint[0], arrPoint[1], arrPoint[2]) * CCW(arrPoint[0], arrPoint[1], arrPoint[3]);// l1 ±‚¡ÿ
-	long long line2 = CCW(arrPoint[2], arrPoint[3], arrPoint[0]) * CCW(arrPoint[2], arrPoint[3], arrPoint[1]);// l2 ±‚¡ÿ
+	long long line1 = CCW(arrPoint[0], arrPoint[1], arrPoint[2]) * CCW(arrPoint[0], arrPoint[1], arrPoint[3]);// l1 Í∏∞Ï§Ä
+	long long line2 = CCW(arrPoint[2], arrPoint[3], arrPoint[0]) * CCW(arrPoint[2], arrPoint[3], arrPoint[1]);// l2 Í∏∞Ï§Ä
 
 	if ((line1 < 0) && (line2 < 0))
 		answer = 1;
 
 
-	if ((line1 == 0) && (line2 == 0))// µŒ ¡˜º±¿Ã ¿œ¡˜º± ªÛø° ¡∏¿Á
+	if ((line1 == 0) && (line2 == 0))// Îëê ÏßÅÏÑ†Ïù¥ ÏùºÏßÅÏÑ† ÏÉÅÏóê Ï°¥Ïû¨
 	{
 		// Set the order of the points on Line1 in the order p1 < p2.
 		if (ComparePoint(arrPoint[1], arrPoint[0]))
@@ -86,10 +86,10 @@ int main()
 		if (ComparePoint(arrPoint[3], arrPoint[2]))
 			swap(arrPoint[2], arrPoint[3]);
 
-		// See if the above conditions are met.	// µŒ º±∫–¿Ã ∆˜∞≥æÓ¡Æ ¿÷¥¬¡ˆ »Æ¿Œ
+		// See if the above conditions are met.	// Îëê ÏÑ†Î∂ÑÏù¥ Ìè¨Í∞úÏñ¥Ï†∏ ÏûàÎäîÏßÄ ÌôïÏù∏
 		answer = (ComparePoint(arrPoint[2], arrPoint[1])) && (ComparePoint(arrPoint[0], arrPoint[3]));
 	}
-	else// l1∞˙ l2∞° ¿œ¡˜º± ªÛø° ¿÷¡ˆ æ ¥¬ ∞ÊøÏ
+	else// l1Í≥º l2Í∞Ä ÏùºÏßÅÏÑ† ÏÉÅÏóê ÏûàÏßÄ ÏïäÎäî Í≤ΩÏö∞
 	{
 		answer = (line1 <= 0) && (line2 <= 0);// l1 and l2 are not in same line.
 
