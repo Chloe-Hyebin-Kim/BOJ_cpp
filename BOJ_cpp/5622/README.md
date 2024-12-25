@@ -28,9 +28,9 @@
 
 ###  **[리마인드]** 
 1. 외워두자!
-   'A' == 65
-   'a' == 97
-   '0' == 48
+   ```'A' == 65;``` 
+   ```'a' == 97;``` 
+   ```'0' == 48;``` 
 2. string to char 
 ```
 std::string str = "string";
@@ -44,7 +44,7 @@ char *cstr = str.data(); // non - const char!!
 
 ```
 std::string str = "string";
-char *cstr = new char[str.size() + 1]; //반드시 +1 !!! aosskwlakr '\0' 널문자 필요!! 
+char *cstr = new char[str.size() + 1]; //반드시 +1 !!! 맨뒤에 '\0' 널문자 필요!! 
 std::strcpy(cstr, str.c_str());
 
 delete [] cstr; // do stuff
