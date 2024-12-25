@@ -49,3 +49,10 @@ std::strcpy(cstr, str.c_str());
 
 delete [] cstr; // do stuff
 ```
+
+```
+std::string str = "string";
+char* cPtr = new char[str.size()+1];
+std::copy(str.begin(), str.end(), cPtr);
+cPtr[str.size()] = '\0';
+```
