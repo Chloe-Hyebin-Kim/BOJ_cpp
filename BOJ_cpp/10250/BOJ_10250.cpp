@@ -14,12 +14,12 @@ int main()
 		int  H, W, N;
 		cin >> H >> W >> N;
 
-		int iX = (N / H) + 1;//È£¼ö
-		int iY = (N % H);//Ãş¼ö
+		int iX = (N / H) + 1;//í˜¸ìˆ˜
+		int iY = (N % H);//ì¸µìˆ˜
 
 		if (iY == 0)
 		{
-			iX -= 1;//µü³ª´² ¶³¾îÁü (²À´ë±âÃş)
+			iX -= 1;//ë”±ë‚˜ëˆ  ë–¨ì–´ì§ (ê¼­ëŒ€ê¸°ì¸µ)
 			iY = H;
 		}
 		string X = to_string(iX);
