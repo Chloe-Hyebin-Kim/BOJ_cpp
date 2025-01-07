@@ -151,7 +151,7 @@ int main()
 5
 5
 6
-//answer : 2
+//answer : 3
 
 //////
 
